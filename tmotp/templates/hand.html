@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>The Making Of The President</title>
+</head>
+<body>
+<h2>Deck Stats</h2>
+<table>
+ <tr><td>Available cards:</td><td>{{ unplayed_cards }}</td></tr>
+ <tr><td>Available dem:</td><td>{{ unplayed_dem }}</td></tr>
+ <tr><td>Available GOP:</td><td>{{ unplayed_gop }}</td></tr>
+ <tr><td>Available Both:</td><td>{{ unplayed_both }}</td></tr>
+ <tr><td>Available leans:</td><td>{{ deck_leans_who }} ({{ deck_leans_amount }})</td></tr>
+ <tr><td>Remaining CP:</td><td>{{ remaining_cp }}</td></tr>
+ <tr><td>Remaining rest:</td><td>{{ remaining_rest }}</td></tr>
+</table>
+<hr/>
+<h2>Current Hand</h2>
+<table border="1">
+ <tr>
+  <th>Card</th>
+  <th>Party</th>
+  <th>CP</th>
+  <th>Rest</th>
+  <th>Issue</th>
+  <th>State</th>
+  <th>Event Text</th>
+</tr>
+{% for card in cards %}
+<tr bgcolor="{% cycle "#EEEEEE" "#FFFFFFF" %}"><td> {{ card.title }}</td>
+<td> {{ card.party }}</td>
+<td> {{ card.campaign_points }}</td>
+<td> {{ card.rest_cubes }}</td>
+<td> {{ card.issue.name }}</td>
+<td> {{ card.state.name }}</td>
+<td>{{ card.event_text }}</td>
+</tr>
+{% endfor %}
+<tr>
+ <td><b>Totals</b></td>
+ <td>{{ dem_count }} DEM<br/>{{ gop_count }} GOP</td>
+ <td>{{ cp_sum }}</td>
+ <td>{{ rest_sum }}</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td>&nbsp;</td>
+</tr>
+</table>
+</body>
+</html>

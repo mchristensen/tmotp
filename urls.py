@@ -5,4 +5,5 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
+    (r'^game/',        include('tmotp.urls')),
 )
